@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2059371701106435');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Facebook Pixel Code -->
+  <style>
+    body {
+      background-color: #b88e6a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: black;
+    }
+
+    /* Your existing styles */
+    
+    .required-symbol {
+      color: rgb(250, 12, 12);
+    }
+
+    .bg2 {
+      position: relative;
+    }
+
+    /* Other styles */
+
+    .btn input[type="submit"] {
+      background-color: indigo;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    /* Optional: Hover effect */
+    .btn input[type="submit"]:hover {
+      background-color: green;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid white;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .error-message {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="bg2" id="infomation" style="position:relative;">
+    <h1>অর্ডার ফরম পূরণ করুন</h1>
+    <form action="https://formspree.io/f/mwkdbgqn" method="POST" onsubmit="return purchaseEvent()">
+      <table class="ta1">
+        <tr>
+          <th>আপনার নাম<span class="required-symbol">※</span></th>
+          <td><input type="text" name="name" size="30" class="ws" required placeholder="আপনার নাম লিখুন "></td>
+        </tr>
+        <!-- Error message for お名前 -->
+        <tr class="error-message" style="display: none;">
+          <td></td>
+          <td class="error-text"></td>
+        </tr>
+        <tr>
+          <th>ফোন নাম্বার <span class="required-symbol">※</span></th>
+          <td><input type="tel" name="tel" size="30" class="ws" required placeholder="আপনার ফোন নাম্বার লিখুন "></td>
+        </tr>
+        <tr>
+          <th>ঠিকানা<span class="required-symbol">※</span></th>
+          <td><textarea name="ঠিকানা" cols="30" rows="5" class="wl" required placeholder="আপনার ঠিকানা লিখুন "></textarea></td>
+        </tr>
+        <tr class="error-message" style="display: none;">
+          <td></td>
+          <td class="error-text"></td>
+        </tr>
+      </table>
+      <p class="btn">
+        <input type="submit" value="অর্ডার করুন">
+      </p>
+    </form>
+  </section>
+  <script>
+     const products = [
+  { id: 'product_1_id', imageUrl: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/9a80a2287d87b832b9ae3bd92e510b1f.jpg?imageView2/2/w/800/q/70/format/webp' },
+  { id: 'product_2_id', imageUrl: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/885c22340f422287c6976fc7409235df.jpg?imageView2/2/w/800/q/70/format/webp' },
+  { id: 'product_3_id', imageUrl: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/68da5749b7dbf420bcac35c14d229156.jpg?imageView2/2/w/800/q/70/format/webp' }
+];
+    function purchaseEvent() {
+      // Trigger the 'Purchase' event when a user makes a purchase
+      fbq('track', 'Purchase', {
+        content_ids: ['product_1_id'],
+        content_ids: ['product_1_id'],
+        content_ids: ['product_1_id'],  // Replace with purchased product IDs or SKUs
+        content_type: 'product',
+        value: 10.00, // Replace with total purchase value
+        currency: 'USD'
+      });
+      document.body.innerHTML = `
+        <div style="text-align: center; padding: 20px;">
+          <h2>Thank you for your order!</h2>
+          <p>We will contact you soon.</p>
+        </div>
+      `;
+      return true; // Submit the form after displaying the message
+    }
+
+    function viewContentEvent() {
+      // Trigger the 'ViewContent' event when content is viewed
+      fbq('track', 'ViewContent', {
+        content_ids: ['product_1_id'],
+        content_ids: ['product_1_id'],
+        content_ids: ['product_1_id'],  // Replace with the ID of the content/article/product being viewed
+        content_type: 'product',
+        value: 5.00, // Replace with the value of the viewed content
+        currency: 'USD'
+      });
+    }
+
+    function customEvent() {
+      // Trigger a custom event
+      fbq('track', 'CustomEvent', {
+        parameter1: 'value1', // Replace with your custom event parameters
+        parameter2: 'value2'
+      });
+    }
+  </script>
+</body>
+</html>
