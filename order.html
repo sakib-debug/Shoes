@@ -20,11 +20,11 @@
   <style>
     body {
       background-color: #b88e6a;
-      display: flex;
+      display: inline-block;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
+      margin: 30%;
       color: black;
     }
 
@@ -55,7 +55,7 @@
     }
 
     table {
-      width: 100%;
+      width: 80%;
       border-collapse: collapse;
     }
 
@@ -79,7 +79,7 @@
 <body>
   <section class="bg2" id="infomation" style="position:relative;">
     <h1>অর্ডার ফরম পূরণ করুন</h1>
-    <form action="https://formspree.io/f/mwkdbgqn" method="POST" onsubmit="return purchaseEvent()">
+     <form action="https://formspree.io/f/mwkdbgqn" method="POST" onsubmit="return purchaseEvent()">
       <table class="ta1">
         <tr>
           <th>আপনার নাম<span class="required-symbol">※</span></th>
@@ -88,30 +88,38 @@
         <!-- Error message for お名前 -->
         <tr class="error-message" style="display: none;">
           <td></td>
-          <td class="error-text"></td>
+          <td class="error-text">Please Enter Your Name</td>
         </tr>
         <tr>
           <th>ফোন নাম্বার <span class="required-symbol">※</span></th>
           <td><input type="tel" name="tel" size="30" class="ws" required placeholder="আপনার ফোন নাম্বার লিখুন "></td>
         </tr>
+<!-- Error message for 電話番号 -->
+					<tr class="error-message" style="display: none;">
+					  <td></td>
+					  <td class="error-text">Please Enter Your Phone number 。</td>
         <tr>
           <th>ঠিকানা<span class="required-symbol">※</span></th>
           <td><textarea name="ঠিকানা" cols="30" rows="5" class="wl" required placeholder="আপনার ঠিকানা লিখুন "></textarea></td>
         </tr>
         <tr class="error-message" style="display: none;">
           <td></td>
-          <td class="error-text"></td>
+          <td class="error-text">Please Enter Your address</td>
         </tr>
-        <tr>
-         <th>ইমেইল<span class="required-symbol">※</span></th>
-	 <td><input type="email" name="email" size="30" class="ws" required placeholder="আপনার ইমেইল লিখুন"></td>
-	</tr>
       </table>
       <p class="btn">
         <input type="submit" value="অর্ডার করুন">
       </p>
+
     </form>
+
   </section>
+<div>
+    <p>
+      <h5>*আমরা ক্যাশ অন ডেলিভারির মাধ্যমে আপনার পণ্য প্রদান করব।</h3>
+      <h5>*আপনার অর্ডার নিশ্চিত করার পর আমরা আপনাকে ফোনে কল করব।</h3>
+    </p>
+  </div>
   <script>
      const products = [
   { id: 'product_1_id', imageUrl: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/9a80a2287d87b832b9ae3bd92e510b1f.jpg?imageView2/2/w/800/q/70/format/webp' },
@@ -119,23 +127,31 @@
   { id: 'product_3_id', imageUrl: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/68da5749b7dbf420bcac35c14d229156.jpg?imageView2/2/w/800/q/70/format/webp' }
 ];
     function purchaseEvent() {
-      // Trigger the 'Purchase' event when a user makes a purchase
-      fbq('track', 'Purchase', {
-        content_ids: ['product_1_id'],
-        content_ids: ['product_1_id'],
-        content_ids: ['product_1_id'],  // Replace with purchased product IDs or SKUs
-        content_type: 'product',
-        value: 10.00, // Replace with total purchase value
-        currency: 'USD'
-      });
-    //   document.body.innerHTML = `
-    //     <div style="text-align: center; padding: 20px;">
-    //       <h2>Thank you for your order!</h2>
-    //       <p>We will contact you soon.</p>
-    //     </div>
-    //   `;
-    //   return true; // Submit the form after displaying the message
-    // }
+      // Form fields validation
+      const name = document.getElementsByName('name')[0].value.trim();
+      const tel = document.getElementsByName('tel')[0].value.trim();
+      const address = document.getElementsByName('ঠিকানা')[0].value.trim();
+
+      if (name === '' || tel === '' || address === '') {
+        // Display error message for each empty field
+        if (name === '') document.getElementById('name-error').style.display = 'table-row';
+        else document.getElementById('name-error').style.display = 'none';
+
+        if (tel === '') document.getElementById('tel-error').style.display = 'table-row';
+        else document.getElementById('tel-error').style.display = 'none';
+
+        if (address === '') document.getElementById('address-error').style.display = 'table-row';
+        else document.getElementById('address-error').style.display = 'none';
+
+        return false; // Prevent form submission
+      }
+
+      // All required fields are filled, proceed with form submission
+      // Here, you can trigger the Facebook Pixel 'Purchase' event if needed
+
+      return true; // Allow form submission
+    }
+
 
     function viewContentEvent() {
       // Trigger the 'ViewContent' event when content is viewed
