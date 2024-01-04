@@ -148,21 +148,24 @@
     }
 
     // JavaScript functions for events (View Content, Custom Events, Purchase)
-    function viewContentEvent() {
-      // Trigger the 'ViewContent' event when a user views the product
+   function viewContentEvent() {
+      // Trigger the 'ViewContent' event when content is viewed
       fbq('track', 'ViewContent', {
         content_ids: ['product_1_id'],
         content_ids: ['product_1_id'],
-        content_ids: ['product_1_id'], // Replace with your product ID or SKU
+        content_ids: ['product_1_id'],  // Replace with the ID of the content/article/product being viewed
         content_type: 'product',
-        value: 5.00, // Replace with your product price
+        value: 5.00, // Replace with the value of the viewed content
         currency: 'USD'
       });
     }
 
     function customEvent() {
-      // Trigger the custom event when a specific action occurs
-      fbq('trackCustom', 'ShareDiscount', {promotion: 'share_discount_10%'});
+      // Trigger a custom event
+      fbq('track', 'CustomEvent', {
+        parameter1: 'value1', // Replace with your custom event parameters
+        parameter2: 'value2'
+      });
     }
   </script>
 </body>
