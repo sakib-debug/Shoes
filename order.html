@@ -103,9 +103,9 @@
           <td class="error-text"></td>
         </tr>
         <tr>
-					  <th>ইমেইল<span class="required-symbol">※</span></th>
-					  <td><input type="email" name="email" size="30" class="ws" required placeholder="আপনার ইমেইল লিখুন"></td>
-					</tr>
+         <th>ইমেইল<span class="required-symbol">※</span></th>
+	 <td><input type="email" name="email" size="30" class="ws" required placeholder="আপনার ইমেইল লিখুন"></td>
+	</tr>
       </table>
       <p class="btn">
         <input type="submit" value="অর্ডার করুন">
@@ -128,14 +128,14 @@
         value: 10.00, // Replace with total purchase value
         currency: 'USD'
       });
-      document.body.innerHTML = `
-        <div style="text-align: center; padding: 20px;">
-          <h2>Thank you for your order!</h2>
-          <p>We will contact you soon.</p>
-        </div>
-      `;
-      return true; // Submit the form after displaying the message
-    }
+    //   document.body.innerHTML = `
+    //     <div style="text-align: center; padding: 20px;">
+    //       <h2>Thank you for your order!</h2>
+    //       <p>We will contact you soon.</p>
+    //     </div>
+    //   `;
+    //   return true; // Submit the form after displaying the message
+    // }
 
     function viewContentEvent() {
       // Trigger the 'ViewContent' event when content is viewed
