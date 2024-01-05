@@ -108,7 +108,8 @@
       <h1>Fashionable Shoes</h1>
       <p>Stylish and Fashionable Winter and Summer Exclusive Sneakers Converse Shoes for Men</p>
       <p>মূল্য:৫০০০ টাকা</p>
-      <button onclick="redirectToOrderPage()" class="buy-now-button">Buy Now</button>
+      <button onclick="addToCartEvent(); redirectToOrderPage();" class="buy-now-button">Buy Now</button>
+
 
     </div>
 
@@ -123,6 +124,21 @@
   { id: 'product_2_id', imageUrl: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/885c22340f422287c6976fc7409235df.jpg?imageView2/2/w/800/q/70/format/webp' },
   { id: 'product_3_id', imageUrl: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/68da5749b7dbf420bcac35c14d229156.jpg?imageView2/2/w/800/q/70/format/webp' }
 ];
+     function addToCartEvent() {
+  // Trigger the 'AddToCart' event when the user clicks the "Buy Now" button
+  fbq('track', 'AddToCart', {
+        content_ids: ['product_1_id'],
+        content_ids: ['product_1_id'],
+        content_ids: ['product_1_id'], // Replace with your product ID or SKU
+    content_type: 'product',
+    value: 5.00, // Replace with your product price
+    currency: 'USD'
+  });
+
+  // You can add additional logic here for adding the product to the cart
+  // For instance, you might want to send an AJAX request to add the product to the cart.
+  // This can vary based on your website's backend implementation.
+}
 
     function toggleAbout() {
       const aboutContent = document.getElementById("about");
